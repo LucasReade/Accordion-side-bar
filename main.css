@@ -1,0 +1,110 @@
+*{margin:0px;padding:0px;font-family: Arial, Helvetica, sans-serif}
+
+body{
+    background: rgb(30, 30, 30);
+}
+
+.appWin{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100vw;
+    height: 100vh;
+}
+.leftPan{
+    width:200px;
+    height: 100vh;
+    background: rgb(37, 37, 38);
+    color: #cccccc;
+}
+
+
+
+    #accordion{
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+        #accordion .panel{
+            transition: flex 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        #accordion .active{
+            flex: 1 1 auto;
+        }
+            #accordion .acc-header::before{
+                content: '>'; 
+                display: inline-block;
+                margin-right: 3px;  
+                transition: all 0.3s;
+            }
+            #accordion .acc-header{
+                box-sizing: border-box;
+                line-height: 20px;
+                font-size: 14px;
+                background: rgba(128, 128, 128, 0.2);
+                padding: 5px;
+                cursor: pointer;
+                height: 30px;
+                transition: background 0.2s;
+            }   
+                #accordion .panel .acc-header .panTitle{
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 11px;
+                }
+                #accordion .panel .acc-header .panControls{
+                    float: right;
+                    display: block;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                }
+                    #accordion .panel .acc-header .panControls input[type=button]{
+                        display: inline-block;
+                        height: 20px;
+                        width: 20px;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                    }  
+            #accordion .active .acc-header::before{
+                content: '>';
+                transform: rotate(90deg);
+            }    
+            #accordion .active .acc-header{
+                
+            }
+                #accordion .active .acc-header .panControls{
+                    opacity: 1;
+                }
+            #accordion .acc-body{
+                height: 0px;
+                overflow: hidden;
+                transition: all 0.2s;
+                padding: 0px 5px;
+                box-sizing: border-box;
+                opacity: 0;
+                flex: 1;
+            }
+            #accordion .active .acc-body {
+                padding: 5px;
+                opacity: 1;
+                overflow: hidden;          
+            }
+            #accordion .active .acc-body::-webkit-scrollbar {
+                width: 10px;
+            }
+            
+            #accordion .active .acc-body::-webkit-scrollbar-thumb {
+                opacity: 0.5;
+                background: rgb(85, 85, 85);   
+            }
+                #accordion .active .acc-body::-webkit-scrollbar-thumb:hover {
+                    background: rgb(110, 110, 110);
+                }
+            
+            #accordion .active .acc-body:hover{
+                overflow-y: scroll;
+            }
+            
